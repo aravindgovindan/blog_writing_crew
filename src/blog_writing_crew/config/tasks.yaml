@@ -1,21 +1,103 @@
 research_task:
   description: >
-    Conduct in-depth research on {topic}, gathering relevant information, statistics, recent trends, insights, and interesting angles to make a compelling blog post. Focus on providing accurate and up-to-date information that will serve as the foundation for the blog post.
+    Conduct thorough research on {topic} using web search.
+
+    Treat information about recent events, current products, companies, people,
+    statistics, prices, laws, regulations, and ongoing developments as
+    time-sensitive and verify them from current sources.
+
+    For every important factual claim:
+    - verify it with a reliable source
+    - record the source name
+    - record the source URL
+    - record the publication date when available
+    - prefer primary sources where possible
+
+    Do not present uncertain information as fact.
+    Do not invent statistics, dates, quotations, or events.
+    When sources disagree, explicitly note the disagreement rather than choosing
+    a value without evidence.
+
   expected_output: >
-    A structured reserarch brief that contains 8-10 key points about {topic}, including relevant statistics, trends, and insights. The brief should be organized in a clear and concise manner, making it easy for the writer to understand and use as a reference for creating the blog post.
+    A structured research brief containing 8-10 key points about {topic}.
+
+    For each key point include:
+    1. The factual claim
+    2. Supporting evidence
+    3. Source name
+    4. Source URL
+    5. Publication date, when available
+
+    Include a final "Sources" section containing the URLs used.
+    Clearly identify any claims that could not be independently verified.
+
   agent: researcher
 
 writing_task:
   description: >
-    Using the research brief provided by the researcher, write a well-structured and engaging blog post about {topic}. The blog post should have a compelling introduction, 3-4 well structured body paragraphs, and a strong conclusion. Ensure that the content is easy to read, informative, and keeps the reader engaged throughout.
+    Using the research brief provided by the researcher, write a well-structured
+    and engaging blog post about {topic}.
+
+    The research brief is the factual source of truth.
+
+    Do not introduce new factual claims from memory.
+    Do not invent statistics, dates, quotations, company announcements,
+    product capabilities, or events.
+
+    When the research brief contains uncertainty or disagreement between sources,
+    preserve that uncertainty accurately.
+
+    Include source links for important factual claims where appropriate.
+
+    Write in clear, natural language rather than sounding like a research report.
+
   expected_output: >
-    A complete blog post in markdown format, approximately 800-1000 words, with an engaging title, introduction, 3-4 main sections with subheadings, and a conclusion.
+    A complete blog post in markdown format, approximately 800-1000 words,
+    with an engaging title, introduction, 3-4 main sections, and a conclusion.
+
+    Include a "Sources" section at the end containing the most important sources
+    used in the article.
+
   agent: writer
 
 editing_task:
   description: >
-    Review and polish the blog post in markdown format ready for publication. Check for grammar, clarity, flow, and overall readability. Ensure that the content is well-organized, free of errors, and maintains a consistent tone throughout. Make any necessary adjustments to improve the overall quality of the blog post.
+    Review the blog post for publication.
+
+    Perform BOTH editorial review and factual verification.
+
+    Check:
+    - grammar and clarity
+    - structure and readability
+    - factual claims
+    - dates and timelines
+    - statistics and numbers
+    - names and organizations
+    - product capabilities
+    - recent events and developments
+    - quotations
+    - claims that may have changed recently
+
+    Use web search to verify important factual claims.
+
+    For time-sensitive claims, prefer sources published recently and verify the
+    relevant date.
+
+    Do not silently guess when a claim cannot be verified.
+    Correct unsupported or outdated claims, or remove them.
+
+    Preserve uncertainty where sources are inconclusive.
+
+    Keep the article engaging while ensuring that factual accuracy takes priority
+    over completeness.
+
   expected_output: >
-    A final, polished version of the blog post in markdown format, ready for publication. The content should be free of grammatical errors, well-structured, and maintain a consistent tone throughout. Any necessary adjustments to improve clarity, flow, and overall quality should be made.
+    A final polished markdown blog post that has been editorially reviewed and
+    fact-checked.
+
+    Include a "Sources" section at the end with the key sources used for
+    factual verification.
+  
   agent: editor
+  
   output_file: output/blog_post.md

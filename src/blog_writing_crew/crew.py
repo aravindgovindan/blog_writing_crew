@@ -1,5 +1,6 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+from crewai_tools import SerperDevTool
 
 @CrewBase
 class BlogWritingCrew():
@@ -8,7 +9,11 @@ class BlogWritingCrew():
     @agent
     def researcher(self) -> Agent:
         """Researcher agent responsible for gathering information and insights for blog posts."""
-        return Agent(config=self.agents_config['researcher'], verbose=True)
+        return Agent(
+            config=self.agents_config['researcher'],
+            tools=[SerperDevTool()],
+            verbose=True,
+        )
 
     @agent
     def writer(self) -> Agent:
@@ -18,7 +23,11 @@ class BlogWritingCrew():
     @agent
     def editor(self) -> Agent:
         """Editor agent responsible for reviewing and refining blog posts."""
-        return Agent(config=self.agents_config['editor'], verbose=True)
+        return Agent(
+            config=self.agents_config['editor'],
+            tools=[SerperDevTool()],
+            verbose=True,
+        )
 
     @task
     def research_task(self) -> Task:

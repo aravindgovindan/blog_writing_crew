@@ -9,12 +9,12 @@ from blog_writing_crew.crew import BlogWritingCrew
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 
-def run():
+def run(topic):
     """
     Run the crew.
     """
     inputs = {
-        'topic': 'How GenAI changed Product Management',
+        'topic': topic,
         'current_year': str(datetime.now().year)
     }
 

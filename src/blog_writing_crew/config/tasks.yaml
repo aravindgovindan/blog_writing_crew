@@ -1,17 +1,21 @@
 research_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Conduct in-depth research on {topic}, gathering relevant information, statistics, recent trends, insights, and interesting angles to make a compelling blog post. Focus on providing accurate and up-to-date information that will serve as the foundation for the blog post.
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
+    A structured reserarch brief that contains 8-10 key points about {topic}, including relevant statistics, trends, and insights. The brief should be organized in a clear and concise manner, making it easy for the writer to understand and use as a reference for creating the blog post.
   agent: researcher
 
-reporting_task:
+writing_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Using the research brief provided by the researcher, write a well-structured and engaging blog post about {topic}. The blog post should have a compelling introduction, 3-4 well structured body paragraphs, and a strong conclusion. Ensure that the content is easy to read, informative, and keeps the reader engaged throughout.
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A complete blog post in markdown format, approximately 800-1000 words, with an engaging title, introduction, 3-4 main sections with subheadings, and a conclusion.
+  agent: writer
+
+editing_task:
+  description: >
+    Review and polish the blog post in markdown format ready for publication. Check for grammar, clarity, flow, and overall readability. Ensure that the content is well-organized, free of errors, and maintains a consistent tone throughout. Make any necessary adjustments to improve the overall quality of the blog post.
+  expected_output: >
+    A final, polished version of the blog post in markdown format, ready for publication. The content should be free of grammatical errors, well-structured, and maintain a consistent tone throughout. Any necessary adjustments to improve clarity, flow, and overall quality should be made.
+  agent: editor
+  output_file: output/blog_post.md

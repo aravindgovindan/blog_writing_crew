@@ -1,48 +1,21 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from crewai.agents.agent_builder.base_agent import BaseAgent
-
 
 @CrewBase
-class BlogWritingCrew():
-    """BlogWritingCrew crew"""
-
-    agents: list[BaseAgent]
-    tasks: list[Task]
+class BlogWritingCrew(Crew):
+    """Blog Writing Crew"""
 
     @agent
     def researcher(self) -> Agent:
-        return Agent(
-            config=self.agents_config['researcher'], # type: ignore[index]
-            verbose=True
-        )
+        """Researcher agent responsible for gathering information and insights for blog posts."""
+        return Agent(config=self.agents_config['researcher'], verbose=True)
 
     @agent
-    def reporting_analyst(self) -> Agent:
-        return Agent(
-            config=self.agents_config['reporting_analyst'], # type: ignore[index]
-            verbose=True
-        )
+    def writer(self) -> Agent:
+        """Writer agent responsible for drafting blog posts based on research."""
+        return Agent(config=self.agents_config['writer'], verbose=True)
 
-    @task
-    def research_task(self) -> Task:
-        return Task(
-            config=self.tasks_config['research_task'], # type: ignore[index]
-        )
-
-    @task
-    def reporting_task(self) -> Task:
-        return Task(
-            config=self.tasks_config['reporting_task'], # type: ignore[index]
-            output_file='report.md'
-        )
-
-    @crew
-    def crew(self) -> Crew:
-        """Creates the BlogWritingCrew crew"""
-        return Crew(
-            agents=self.agents,
-            tasks=self.tasks,
-            process=Process.sequential,
-            verbose=True,
-        )
+    @agent
+    def editor(self) -> Agent:
+        """Editor agent responsible for reviewing and refining blog posts."""
+        return Agent(config=self.agents_config['editor'], verbose=True)

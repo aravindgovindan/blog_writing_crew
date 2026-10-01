@@ -26,6 +26,7 @@ header {
 header h1 {
   margin-bottom: 8px;
   font-size: 36px;
+  color: #666;
 }
 
 header p {
@@ -46,17 +47,16 @@ header p {
   margin-bottom: 8px;
 }
 
-textarea {
+input[type="text"] {
   width: 100%;
   padding: 14px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
-  resize: vertical;
   font-family: inherit;
 }
 
-textarea:focus {
+input[type="text"]:focus {
   outline: none;
   border-color: #555;
 }
@@ -108,10 +108,12 @@ button:disabled {
 .markdown h1 {
   font-size: 32px;
   line-height: 1.2;
+  color:#333;
 }
 
 .markdown h2 {
   margin-top: 32px;
+  color:#333;
 }
 
 .markdown img {
@@ -129,4 +131,8 @@ button:disabled {
   padding: 16px;
   overflow-x: auto;
   border-radius: 8px;
+}
+
+.markdown p {
+  text-align: justify;
 }

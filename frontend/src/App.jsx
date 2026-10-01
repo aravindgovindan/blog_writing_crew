@@ -47,7 +47,7 @@ function App() {
     <div className="app">
       <main className="container">
         <header>
-          <h1>AI Blog Writer</h1>
+          <h1>AI Blog Writing Crew</h1>
           <p>
             Enter a topic and let the research, writing, and editing crew
             create a blog post.
@@ -57,12 +57,12 @@ function App() {
         <section className="generator">
           <label htmlFor="topic">Topic</label>
 
-          <textarea
+          <input
+            type="text"
             id="topic"
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             placeholder="Enter a topic for your blog post..."
-            rows={4}
           />
 
           <button

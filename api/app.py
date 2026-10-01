@@ -1,6 +1,7 @@
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from blog_writing_crew.main import run
@@ -14,13 +15,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 class BlogRequest(BaseModel):
     topic: str
 
-@app.get("/")
-def root():
-    return {"message": "Welcome to the Blog Writing Crew API!"}
+# @app.get("/")
+# def root():
+#     return {"message": "Welcome to the Blog Writing Crew API!"}
 
 @app.post("/generate")
 def generate_blog(request: BlogRequest):
@@ -44,3 +44,8 @@ def generate_blog(request: BlogRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {e}")
 
+frontend_dist = Path(__file__).parent.parent / "frontend" / "dist"
+
+if frontend_dist.exists():
+    app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
+    

@@ -25,3 +25,6 @@ build-backend = "hatchling.build"
 [tool.crewai]
 type = "crew"
 project_id = "b5223077-3212-4f5f-9299-871bf8ec9a5b"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/blog_writing_crew"]
